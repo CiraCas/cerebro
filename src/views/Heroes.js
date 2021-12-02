@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {simpleCall} from "../utils/calls";
 import Heroe from "../components/Heroe";
 
@@ -10,8 +10,8 @@ function Heroes() {
   useEffect(() => {
     simpleCall().then(
       result => {
-        console.log(result.data.data.results[3]);
-        setMarvel(result.data.data.results)
+        setMarvel(result.data)
+        //setMarvel(result.data.data.results)
       }
     ).catch(console.log);
   }, []) 
@@ -27,7 +27,7 @@ function Heroes() {
   }
 
   return(
-    <Fragment>
+    <>
 
       <div className="container grupos-fotos">
         {heroeMarvelView.map( heroe => (
@@ -48,7 +48,7 @@ function Heroes() {
           >Añadir heroe</button>
         )
       }
-    </Fragment>
+    </>
   )
   
 }
