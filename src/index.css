@@ -7,8 +7,8 @@ html {
 body{
   font-size: 16px; /* 1rem=10px */
 }
- h1, h2,{
-   color: rgb(238, 160, 34);
+ h1, h2{
+   color: rgb(184, 71, 6);
  }
  .footer{
    background-color: rgb(94, 156, 243);
@@ -51,6 +51,42 @@ body{
   margin-top: 2rem;
   border-radius: 2rem;
   padding: 1.5rem;
-  color: rgb(184, 71, 6);;
+  color: rgb(184, 71, 6);
 
+}
+
+.alerta-error {
+  background-color: white;
+  color: red;
+  padding: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+} 
+.formulario-admin {
+  background-color: rgb(94, 156, 243);
+  width: min(80rem, 100%); /*coge 700px o si es más pequeño el 100%. Evita usar media queries */
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+}
+
+.formulario-admin label,
+.formulario-admin legend {
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+.formulario-admin input,
+.formulario-admin textarea {
+  margin-top: 0.5rem;
+}
+
+.apartado-form {
+  display: flex;
+  flex-direction: column; 
+  margin-bottom: 1rem;
+}
+.apartado-form textarea {
+  height: 10rem;
 }

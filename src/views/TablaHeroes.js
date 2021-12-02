@@ -9,7 +9,8 @@ const TablaHeroes = () => {
   useEffect(() => {
     simpleCall().then(
       result => {
-        setMarvel(result.data.data.results);
+        setMarvel(result.data);
+        //setMarvel(result.data.data.results);
       }
     ).catch(console.log);
   }, []) 
