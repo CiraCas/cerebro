@@ -20,6 +20,16 @@ body{
 
  }
 
+ .alin-derecha {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.centrar {
+  text-align: center;
+}
+
  .grupos-fotos {
   display: grid;
   grid-template-columns: 1fr;
@@ -89,4 +99,62 @@ body{
 }
 .apartado-form textarea {
   height: 10rem;
+}
+
+.input-text {
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.boton {
+
+  background-color:  rgb(18, 56, 108);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 1rem;
+  width: 90%;
+  text-align: center;
+  border: none;
+}
+.boton:hover{
+  cursor: pointer;
+}
+@media (min-width: 768px) { 
+  .boton{
+    width: auto;
+  }
+}
+
+.formulario {
+  background-color: rgb(94, 156, 243);
+  width: min(60rem, 100%); /*coge 600px o si es más pequeño el 100%. Evita usar media queries */
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.formulario fieldset {
+  border: none;
+}
+.formulario legend {
+  color: black;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
+
+
+}
+
+.formulario label{
+  font-weight: bold;
+  margin: 0.5rem;
+  display: block;
 }

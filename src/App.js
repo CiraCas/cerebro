@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./views/Home";
+import Login from "./views/Login";
 import Heroes from "./views/Heroes";
 import BuscarHeroe from "./views/BuscarHeroe";
 import TablaHeroes from "./views/TablaHeroes";
@@ -20,7 +20,7 @@ function App() {
           >
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/">Login</Link>
               </li>
               <li>
                 <Link to="/heroes">Heroes</Link>
@@ -52,7 +52,7 @@ function App() {
               <Heroes />
             </Route>
             <Route path="/">
-              <Home />
+              <Login />
             </Route>
           </Switch>
         </div>
