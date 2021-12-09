@@ -4,11 +4,15 @@ import { UsuarioContext } from '../context/UsuarioContext';
 
 const Desconectar = () => {
 
-    const { setRegistered } = useContext(UsuarioContext);
+    const { setRegistered, setUsuario } = useContext(UsuarioContext);
     const history = useHistory();
 
     const disconnect = () => {
         setRegistered(false);
+        setUsuario({
+            name: '',
+            password: ''
+        });
         history.push('/');
 
 

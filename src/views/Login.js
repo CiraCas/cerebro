@@ -41,7 +41,7 @@ function Login() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setConfirmar(false)
     if ( name.trim() === '' || password.trim() === ''){
       setError (true)
       return
@@ -50,7 +50,7 @@ function Login() {
     usuSearch.forEach(usu => {
       if( name === usu.name && password === usu.password ){
         setRegistered(true);
-        setConfirmar(false);
+        //setConfirmar(false);
         history.push('/heroes');
         return;
       }else setConfirmar(true)
