@@ -1,19 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from 'react-router-dom';
+import { UsuarioContext } from '../context/UsuarioContext';
 import {simpleCall} from "../utils/calls";
 import Heroe from "../components/Heroe";
+
+
 
 function Heroes() {
     
   const [marvel, setMarvel] = useState([]);
   const [heroeMarvelView, setHeroeMarvelView] = useState([]);
+  const { registered } = useContext(UsuarioContext);
+  const history = useHistory();
+
+  
 
   useEffect(() => {
-    simpleCall().then(
+    if(!registered){
+      history.push('/')
+  
+    }else{
+      simpleCall().then(
       result => {
         setMarvel(result.data)
         //setMarvel(result.data.data.results)
       }
     ).catch(console.log);
+    }
+    
   }, []) 
 
   const randomHeroeMarvel = () => {
@@ -25,10 +39,11 @@ function Heroes() {
     ])
     marvel.splice(elementoAleatorio, 1);
   }
-
+  
+  
   return(
     <>
-
+      
       <div className="container grupos-fotos">
         {heroeMarvelView.map( heroe => (
           <Heroe
