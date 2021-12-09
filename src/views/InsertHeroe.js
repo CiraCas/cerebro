@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { postCall } from "../utils/calls"; 
+
+import { useHistory } from 'react-router-dom';
+import { UsuarioContext } from '../context/UsuarioContext';
 
 
 const InsertHeroe = () => {
@@ -13,9 +16,15 @@ const InsertHeroe = () => {
     });
     const [heroe, setHeroe] = useState({});
     const [controlCambio, setControlCambio] = useState(false);
-    console.log(heroe)
     const { name, description } = heroeForm;
     const [error, setError] = useState(false);
+    const { registered } = useContext(UsuarioContext);
+    const history = useHistory();
+
+    if(!registered){
+        history.push('/')
+    
+    }
 
     const grabarImg = e => {
 

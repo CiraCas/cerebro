@@ -1,8 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import Heroe from '../components/Heroe';
 import { searchCall, simpleCall} from "../utils/calls"; 
 
+import { useHistory } from 'react-router-dom';
+import { UsuarioContext } from '../context/UsuarioContext';
+
 const BuscarHeroe = () => {
+  const { registered } = useContext(UsuarioContext);
+  const history = useHistory();
 
   /* const [ letra, setLetra ] = useState('');
   const [ marvel, setMarvel ] = useState([]);
@@ -78,12 +83,19 @@ const BuscarHeroe = () => {
   }
 
   useEffect(() => {
-    searchCall(url).then(
-      result => {
-        //setHeroes(result.data.data.results)
-        setHeroes(result.data)
-      }
-    ).catch(console.log);
+
+    if(!registered){
+      history.push('/')
+  
+    }else{
+      searchCall(url).then(
+        result => {
+          //setHeroes(result.data.data.results)
+          setHeroes(result.data)
+        }
+      ).catch(console.log);
+    }
+   
   }, [letra, url]) 
 
   return ( 
