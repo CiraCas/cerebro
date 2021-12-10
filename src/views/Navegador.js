@@ -13,8 +13,14 @@ const Navegador = () => {
       <div 
         className = "header"
       >
-        <nav>
-            <ul>
+        {registered
+        ?
+          <Desconectar
+          />
+        : null
+        }
+        <nav className="container">
+            <ul className='navegacion'>
               
               {registered
               ? 
@@ -42,9 +48,6 @@ const Navegador = () => {
               
             </ul>
         </nav>
-
-        <Desconectar
-        />
         
       </div>
      );

@@ -17,10 +17,21 @@ const Desconectar = () => {
 
 
     }
-    return ( <button 
-        type="button"
-        onClick={disconnect}
-      >Desconectar</button> );
+    return ( 
+        <div
+            className="alin-derecha"
+        >
+            
+            <i 
+            type="button"
+            onClick={disconnect}
+            className="fas fa-sign-out-alt">
+            </i>
+            
+        </div> 
+    );
+        
+        
 }
  
 export default Desconectar;

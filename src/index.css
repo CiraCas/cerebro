@@ -1,17 +1,42 @@
+:root{
+  --primario: rgb(94, 156, 243);
+  --primarioOscuro: rgb(18, 56, 108);
+  --secundario: rgb(184, 71, 6);
+  --error: red;
+  --blanco: white;
+
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box; /*para que no se me modifique el tamaño al añadir pading*/
   /*scroll-snap-type: y mandatory; /*para que se detenga en las partes que yo quiera*/
 }
+*, *:before, *:after { /*para que no se me modifique el tamaño al añadir pading. Va con el box-sizing del html*/
+  box-sizing: inherit;
+}
 
 body{
   font-size: 16px; /* 1rem=10px */
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0;
 }
  h1, h2{
-   color: rgb(184, 71, 6);
+   color: var(--secundario);
+ }
+ fieldset {
+  border: none;
+ }
+
+ ul{
+   padding: 0;
+   
  }
  .header{
-   background-color: rgb(94, 156, 243);
+   background-color: var(--primario);
+   display: flex;
+   flex-direction: row-reverse;
+   
  }
  .container{
     max-width: 130rem;
@@ -53,7 +78,7 @@ body{
 
 .grupo-foto {
 
-  background-color: rgb(18, 56, 108);
+  background-color: var(--primarioOscuro);
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -61,20 +86,20 @@ body{
   margin-top: 2rem;
   border-radius: 2rem;
   padding: 1.5rem;
-  color: rgb(184, 71, 6);
+  color: var(--secundario);
 
 }
 
 .alerta-error {
  
-  color: red;
+  color: var(--error);
   padding: 1rem;
   font-size: 2rem;
   text-transform: uppercase;
   text-align: right;
 } 
 .formulario-admin {
-  background-color: rgb(94, 156, 243);
+  background-color: var(--primario);
   width: min(80rem, 100%); /*coge 700px o si es más pequeño el 100%. Evita usar media queries */
   margin: 0 auto;
   padding: 2rem;
@@ -84,12 +109,21 @@ body{
 
 .formulario-admin label,
 .formulario-admin legend {
+  color: var(--primarioOscuro);
   font-weight: bold;
   padding-bottom: 1rem;
 }
 .formulario-admin input,
 .formulario-admin textarea {
   margin-top: 0.5rem;
+}
+.formulario-admin legend{
+  color: var(--primarioOscuro);
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .apartado-form {
@@ -103,15 +137,15 @@ body{
 
 .input-text {
   border: none;
-  width: 100%;
+  width: 98%;
   padding: 1rem;
   border-radius: 0.5rem;
 }
 
 .boton {
 
-  background-color:  rgb(18, 56, 108);
-  color: white;
+  background-color:  var(--primarioOscuro);
+  color: var(--blanco);
   text-decoration: none;
   padding: 1rem 3rem;
   margin-top: 1rem;
@@ -133,18 +167,16 @@ body{
 }
 
 .formulario {
-  background-color: rgb(94, 156, 243);
+  background-color: var(--primario);
   width: min(60rem, 100%); /*coge 600px o si es más pequeño el 100%. Evita usar media queries */
   margin: 0 auto;
   padding: 2rem;
   border-radius: 1rem;
+  font-size: 2rem;
 }
-.formulario fieldset {
-  border: none;
-}
+
 .formulario legend {
-  color: black;
-  font-size: 1.8rem;
+  color: var(--primarioOscuro);
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 2rem;
@@ -154,7 +186,55 @@ body{
 }
 
 .formulario label{
+  color: var(--primarioOscuro);
   font-weight: bold;
   margin: 0.5rem;
   display: block;
+}
+
+.navegacion{ 
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;/*Para alinear en columnas pero lo alinearemos en a*/
+
+}
+@media (min-width: 768px) { 
+  .navegacion{
+    flex-direction: row;
+    justify-content: space-between;/*para alinear en rows*/
+  }
+}
+.navegacion li {
+  list-style: none ;
+}
+
+.navegacion a {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1rem;
+  color: var(--primarioOscuro);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+
+}
+.navegacion a:hover{
+  color: var(--blanco);
+  background-color: var(--primarioOscuro);
+  border-radius: 10px;
+  
+}
+
+.fas {
+  color: var(--primarioOscuro);
+  font-size: 30px;
+  padding: 1rem;
+  margin-right: 2rem;
+  margin-top: 1.5rem;
+  
+}
+
+.fas:hover{
+  color: var(--blanco);
 }
