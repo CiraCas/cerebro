@@ -42,7 +42,15 @@ const TablaHeroes = () => {
     return rows
   }) 
      
-  return ( <DataGrid columns={columns} rows={rows} /> );
+  return ( 
+    <main
+      className='centrar container'
+    >
+      <h2>Tabla Heroes</h2> 
+          
+      <DataGrid columns={columns} rows={rows} /> 
+    </main>
+  );
 }
  
 export default TablaHeroes;

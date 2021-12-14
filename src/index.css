@@ -23,6 +23,10 @@ body{
 }
  h1, h2{
    color: var(--secundario);
+   font-size: 2em;
+ }
+ h3 {
+   font-size: 1.5em;
  }
  fieldset {
   border: none;
@@ -55,7 +59,7 @@ body{
   text-align: center;
 }
 
- .grupos-fotos {
+.grupos-fotos {
   display: grid;
   grid-template-columns: 1fr;
   /*se fuede poner tambien: repeat(3, 1fr); o 33.3% 33.3% 33.3%*/
@@ -141,6 +145,12 @@ body{
   padding: 1rem;
   border-radius: 0.5rem;
 }
+.input-heroe {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 30%;
+  margin: 2rem;
+}
 
 .boton {
 
@@ -172,7 +182,6 @@ body{
   margin: 0 auto;
   padding: 2rem;
   border-radius: 1rem;
-  font-size: 2rem;
 }
 
 .formulario legend {
@@ -181,7 +190,7 @@ body{
   text-transform: uppercase;
   margin-bottom: 2rem;
   text-align: center;
-
+  font-size: 2rem;
 
 }
 
@@ -190,6 +199,7 @@ body{
   font-weight: bold;
   margin: 0.5rem;
   display: block;
+  font-size: 2rem;
 }
 
 .navegacion{ 

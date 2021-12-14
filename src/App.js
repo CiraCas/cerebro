@@ -5,6 +5,7 @@ import BuscarHeroe from "./views/BuscarHeroe";
 import TablaHeroes from "./views/TablaHeroes";
 import InsertHeroe from "./views/InsertHeroe";
 import Navegador from "./views/Navegador";
+import InsertUser from "./views/InsertUser";
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +23,9 @@ function App() {
         <Navegador/>
           
         <Switch>
+        <Route path="/insertuser">
+            <InsertUser />
+          </Route>
           <Route path="/insertheroe">
             <InsertHeroe />
           </Route>

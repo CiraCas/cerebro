@@ -42,9 +42,12 @@ function Heroes() {
   
   
   return(
-    <>
-      
+    <main>
+       <h1
+        className="centrar"
+        >Heroes</h1>
       <div className="container grupos-fotos">
+       
         {heroeMarvelView.map( heroe => (
           <Heroe
             key = {heroe.id}
@@ -57,13 +60,19 @@ function Heroes() {
         marvel.length === 0 ? (
           <p>No hay más heroes</p>
         ) : (
-          <button
-            onClick={randomHeroeMarvel}
-            id="boton"
-          >Añadir heroe</button>
+          <div
+          className="container"
+          >
+            <button
+              onClick={randomHeroeMarvel}
+              id="boton"
+              className="boton"
+            >Añadir heroe
+            </button>
+          </div>
         )
       }
-    </>
+    </main>
   )
   
 }

@@ -99,13 +99,19 @@ const BuscarHeroe = () => {
   }, [letra, url]) 
 
   return ( 
-    <>
+    <main
+    className="container"
+    >
+      <h2
+      className='centrar'
+      >Busca Heroe</h2>
       <input
+      className="input-heroe"
         onChange={buscarHeroe}
         placeholder="Busca Heroe"
       />
         
-      <div className="container grupos-fotos">
+      <div className="grupos-fotos">
         {heroes.map(heroe=>(
           <Heroe
             key = {heroe.id}
@@ -113,7 +119,7 @@ const BuscarHeroe = () => {
           />
         ))} 
       </div>
-    </> 
+    </main> 
   );
 }
  

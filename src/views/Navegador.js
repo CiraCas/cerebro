@@ -10,46 +10,49 @@ const Navegador = () => {
 
     
     return ( 
-      <div 
-        className = "header"
-      >
+      <>
         {registered
-        ?
-          <Desconectar
-          />
-        : null
+          ?
+          (
+            <div 
+              className = "header"
+            >
+              <Desconectar
+              />
+            
+              <nav className="container">
+                  <ul className='navegacion'>
+                  
+                      <>
+                          <li
+                           tabIndex="0"
+                          >
+                              <Link to="/heroes">Heroes</Link>
+                          </li>
+                          <li
+                            tabIndex="1"
+                          >
+                              <Link to="/buscarheroe">Buscador</Link>
+                          </li>
+                          <li>
+                              <Link to="/tablaheroes">Tabla Heroes</Link>
+                          </li>
+                          <li>
+                              <Link to="/insertheroe">Agregar Heroe</Link>
+                          </li>
+                          </>
+                     
+                
+                    
+                  </ul>
+              </nav>
+              
+            </div>
+          )
+          : null
         }
-        <nav className="container">
-            <ul className='navegacion'>
-              
-              {registered
-              ? 
-              (
-                <>
-                    <li>
-                        <Link to="/heroes">Heroes</Link>
-                    </li>
-                    <li>
-                        <Link to="/buscarheroe">Buscador</Link>
-                    </li>
-                    <li>
-                        <Link to="/tablaheroes">Tabla Heroes</Link>
-                    </li>
-                    <li>
-                        <Link to="/insertheroe">Agregar Heroe</Link>
-                    </li>
-                    </>
-                )
-              : 
-                <li>
-                    <Link to="/">Login</Link>
-                </li>
-              }
-              
-            </ul>
-        </nav>
-        
-      </div>
+      </>
+
      );
 }
  

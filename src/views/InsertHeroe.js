@@ -108,8 +108,12 @@ const InsertHeroe = () => {
     }
 
     return (         
-        <>
-            <h2>Agregar nuevo Heroe</h2> 
+        <main>
+            <div
+                className='centrar'
+            >
+                <h2>Agregar Heroe</h2> 
+            </div>
             {error? <p className="alerta-error">Campo nombre es obligatorio</p> 
             : null}
             
@@ -118,7 +122,7 @@ const InsertHeroe = () => {
                 className="formulario-admin"
             >
                 <fieldset>
-                    <legend>Agregar Nueva Heroe</legend>
+                    <legend> Nuevo Heroe</legend>
                     <div className="apartado-form">
                         <label>Nombre Heroe*</label>
                         <input
@@ -163,7 +167,7 @@ const InsertHeroe = () => {
                     
                 </fieldset>
             </form>
-        </> 
+        </main> 
         );
 }
  
