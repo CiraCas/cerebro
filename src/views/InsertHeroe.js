@@ -108,8 +108,12 @@ const InsertHeroe = () => {
     }
 
     return (         
-        <>
-            <h2>Agregar nuevo Heroe</h2> 
+        <main>
+            <div
+                className='centrar'
+            >
+                <h2>Agregar Heroe</h2> 
+            </div>
             {error? <p className="alerta-error">Campo nombre es obligatorio</p> 
             : null}
             
@@ -117,43 +121,53 @@ const InsertHeroe = () => {
                 onSubmit={submitHeroe}
                 className="formulario-admin"
             >
-                <div className="apartado-form">
-                    <label>Nombre Heroe*</label>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="nombre heroe"
-                        onChange={grabarDatos}  
-                        value={name} //para reiniciar
-                    />
-                </div>
-                <div className="apartado-form">
-                    <label>Imagen</label>
-                    <input
-                        id = "result"
-                        type = "file"
-                        name = "img"
-                        //onChange={grabarDatos}
-                        onChange = {grabarImg}  
-                        //value = {img} 
-                    />
+                <fieldset>
+                    <legend> Nuevo Heroe</legend>
+                    <div className="apartado-form">
+                        <label>Nombre Heroe*</label>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="nombre heroe"
+                            className="input-text"
+                            onChange={grabarDatos}  
+                            value={name} //para reiniciar
+                        />
+                    </div>
+                    <div className="apartado-form">
+                        <label>Imagen</label>
+                        <input
+                            id = "result"
+                            type = "file"
+                            name = "img"
+                            //onChange={grabarDatos}
+                            onChange = {grabarImg}  
+                            //value = {img} 
+                        />
+                        
+                    </div>
+                    <div className="apartado-form">
+                        <label>Descripción</label>
+                        <textarea
+                            name="description"
+                            onChange={grabarDatos}
+                            value={description}
+                            className="input-text"
+                        ></textarea>
+                    </div>
+                    <div
+                        className='alin-derecha'
+                    >
+                        <button
+                            type="submit"
+                            className="boton"
+                        >Agregar Heroe
+                        </button>
+                    </div>
                     
-                </div>
-                <div className="apartado-form">
-                    <label>Descripción</label>
-                    <textarea
-                        name="description"
-                        onChange={grabarDatos}
-                        value={description}
-                    ></textarea>
-                </div>
-
-                <button
-                    type="submit"
-                    className="boton"
-                >Agregar Heroe</button>
+                </fieldset>
             </form>
-        </> 
+        </main> 
         );
 }
  

@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { useHistory } from 'react-router-dom';
+import { 
+  useHistory,
+  Link
+} from 'react-router-dom';
 
 import { UsuarioContext } from '../context/UsuarioContext';
 import { searchCall} from "../utils/calls";
@@ -16,18 +19,18 @@ function Login() {
 
   const { name,  password } = usuario;
 
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   let url = `https://localhost:44354/api/users`
 
-    useEffect(() => {
-        searchCall(url).then(
-        result => {
-            setUsuSearch(result.data)
-            console.log(usuSearch[0])
-        }
-        ).catch(console.log);
-    }, [])
+  useEffect(() => {
+      searchCall(url).then(
+      result => {
+          setUsuSearch(result.data)
+          console.log(usuSearch[0])
+      }
+      ).catch(console.log);
+  }, [])
 
     
   
@@ -55,7 +58,7 @@ function Login() {
         return;
       }else setConfirmar(true)
       
-    }
+      }
     );
     
     
@@ -64,9 +67,9 @@ function Login() {
 
   return (
     <main className="container">
-      <h1 className="centrar">
+      <h2 className="centrar">
           Login
-      </h1>
+      </h2>
       <form 
         className="formulario"  
         onSubmit={handleSubmit} 
@@ -96,7 +99,7 @@ function Login() {
                 : null}
                 {confirmar? <p className = "alerta-error">Los datos no coinciden</p> 
                 : null}
-              
+                <Link to="/InsertUser">¿No tienes cuenta?</Link>
               <div 
                 className="alin-derecha"
               >

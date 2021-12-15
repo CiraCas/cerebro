@@ -12,10 +12,15 @@ const postCall = (heroe) => {
 
 }
 
+const postCallUser = (user) => {
+    //debugger
+    return axios.post('https://localhost:44354/api/users', user );
+
+}
 const searchCall = (url) => {
     return axios.get(url);
 }
 
 export {
-    simpleCall, searchCall, postCall
+    simpleCall, searchCall, postCall, postCallUser
 }
