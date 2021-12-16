@@ -36,12 +36,6 @@ body{
    padding: 0;
    
  }
- .header{
-   background-color: var(--primario);
-   display: flex;
-   flex-direction: row-reverse;
-   
- }
  .container{
     max-width: 130rem;
     /*margin: 0 auto 0 auto; ponemos todos los margin en 1 en orden: top, right, bottom, left*/
@@ -52,7 +46,6 @@ body{
  .alin-derecha {
   display: flex;
   justify-content: flex-end;
-
 }
 
 .centrar {
@@ -202,18 +195,7 @@ body{
   font-size: 2rem;
 }
 
-.navegacion{ 
-  display: flex;
-  flex-direction: column;
-  /*align-items: center;/*Para alinear en columnas pero lo alinearemos en a*/
 
-}
-@media (min-width: 768px) { 
-  .navegacion{
-    flex-direction: row;
-    justify-content: space-between;/*para alinear en rows*/
-  }
-}
 .navegacion li {
   list-style: none ;
 }
@@ -246,5 +228,78 @@ body{
 }
 
 .fas:hover{
+  color: var(--secundario);
+}
+
+/*nuevo diseño*/
+.bo-flex-container{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width:768px){
+  .bo-flex-container{
+    flex-direction: row;
+  }
+}
+.bo-main{
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width:768px){
+  .bo-main{
+    width: calc(100% - 325px); /* calcula siempre el 100% menos lo que ocupa el aside */
+    min-height: 100vh;
+  }
+}
+
+/*  Menu Navegación */
+
+.bo-aside{
+  width: 100%;
+  background-color: var(--primario);
+  
+  padding: 1rem;
+  box-sizing: border-box;
+}
+@media only screen and (min-width:768px){
+  .bo-aside{
+    width: 325px;
+    min-height: 100vh;
+  }
+}
+
+.menu-navigation{
+  display: grid;
+  grid-template-rows: 2fr 2fr 2fr 2fr ;
+}
+
+
+.bo-aside .menu-navigation .menu-list .menu-list-item {
+  
+  width: 100%;
+  height: 100px;
+  background-color: var(--secundarioOscuro);
+  border-bottom: 1px solid white;
+  
+
+}
+.menu-list-item a {
   color: var(--blanco);
+  font-size: 2rem;
+  font-weight: bold;
+}
+.menu-list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bo-aside .menu-navigation .menu-list .menu-list-item:last-of-type{
+  border-bottom: none
+
+}
+.bo-aside .menu-navigation .menu-list .menu-list-item.activa {
+  background-color: var(--primario);
 }

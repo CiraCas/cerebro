@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Desconectar from './Desconectar';
+
 import { Link } from "react-router-dom";
 import { UsuarioContext } from '../context/UsuarioContext';
 
@@ -14,42 +14,33 @@ const Navegador = () => {
         {registered
           ?
           (
-            <div 
-              className = "header"
-            >
-              <Desconectar
-              />
+            <aside className="bo-aside">
             
-              <nav className="container">
-                  <ul className='navegacion'>
+              <nav>
+                  <ul className="menu-navigation navegacion">
                   
-                      <>
-                          <li
-                           tabIndex="0"
-                          >
-                              <Link to="/heroes">Heroes</Link>
-                          </li>
-                          <li
-                            tabIndex="1"
-                          >
-                              <Link to="/buscarheroe">Buscador</Link>
-                          </li>
-                          <li>
-                              <Link to="/tablaheroes">Tabla Heroes</Link>
-                          </li>
-                          <li>
-                              <Link to="/insertheroe">Agregar Heroe</Link>
-                          </li>
-                          </>
-                     
-                
-                    
+                    <li>
+                        <Link to="/heroes">Heroes</Link>
+                    </li>
+                    <li>
+                        <Link to="/buscarheroe">Buscador</Link>
+                    </li>
+                    <li>
+                        <Link to="/tablaheroes">Tabla Heroes</Link>
+                    </li>
+                    <li>
+                        <Link to="/insertheroe">Agregar Heroe</Link>
+                    </li>
+                          
                   </ul>
+                  
               </nav>
               
-            </div>
+            
+            </aside>
           )
-          : null
+          : 
+          null
         }
       </>
 

@@ -43,9 +43,8 @@ function Heroes() {
   
   return(
     <main>
-       <h1
-        className="centrar"
-        >Heroes</h1>
+      <h1 className="centrar">Heroes</h1>
+
       <div className="container grupos-fotos">
        
         {heroeMarvelView.map( heroe => (
@@ -57,12 +56,14 @@ function Heroes() {
       </div>
 
       {
-        marvel.length === 0 ? (
+        marvel.length === 0 
+        ? 
+        (
           <p>No hay más heroes</p>
-        ) : (
-          <div
-          className="container"
-          >
+        ) 
+        : 
+        (
+          <div className="container">
             <button
               onClick={randomHeroeMarvel}
               id="boton"

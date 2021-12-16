@@ -109,9 +109,7 @@ const InsertHeroe = () => {
 
     return (         
         <main>
-            <div
-                className='centrar'
-            >
+            <div className='centrar'>
                 <h2>Agregar Heroe</h2> 
             </div>
             {error? <p className="alerta-error">Campo nombre es obligatorio</p> 
@@ -155,13 +153,12 @@ const InsertHeroe = () => {
                             className="input-text"
                         ></textarea>
                     </div>
-                    <div
-                        className='alin-derecha'
-                    >
+                    <div className='alin-derecha'>
                         <button
                             type="submit"
                             className="boton"
-                        >Agregar Heroe
+                        >
+                            Agregar Heroe
                         </button>
                     </div>
                     

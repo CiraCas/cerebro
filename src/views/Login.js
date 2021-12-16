@@ -27,7 +27,6 @@ function Login() {
       searchCall(url).then(
       result => {
           setUsuSearch(result.data)
-          console.log(usuSearch[0])
       }
       ).catch(console.log);
   }, [])
@@ -100,9 +99,7 @@ function Login() {
                 {confirmar? <p className = "alerta-error">Los datos no coinciden</p> 
                 : null}
                 <Link to="/InsertUser">¿No tienes cuenta?</Link>
-              <div 
-                className="alin-derecha"
-              >
+              <div className="alin-derecha">
                 <button 
                   type="submit"
                   className="boton"

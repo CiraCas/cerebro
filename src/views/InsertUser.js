@@ -105,13 +105,13 @@ const InsertUser = () => {
     }
 
     return ( 
-        <main className="container">
-        <h2 className="centrar">
-            Crea Nueva Cuenta
-        </h2>
-        <form 
-          className="formulario"  
-          onSubmit={handleSubmit} 
+        <main>
+          <h2 className="centrar">
+              Crea Nueva Cuenta
+          </h2>
+          <form 
+            className="formulario"  
+            onSubmit={handleSubmit} 
           >
             <fieldset>
                 <legend>Nuevo Usuario</legend>
@@ -144,16 +144,14 @@ const InsertUser = () => {
                     onChange={handleChange}
                     value={password2}
                   /> 
-                   
+                  
                   {error? <p className = "alerta-error">Todos los campos son obligatorios</p> 
                   : null}
                   {confirmar? <p className = "alerta-error">Las contraseñas no coinciden</p> 
                   : null}
                   {exists? <p className = "alerta-error">Nombre de usuario ya registrado</p> 
                   : null}
-                <div 
-                  className="alin-derecha"
-                >
+                <div className="alin-derecha">
                   <button 
                     type="submit"
                     className="boton"
@@ -162,7 +160,7 @@ const InsertUser = () => {
                   </button>
                 </div>
             </fieldset>
-  
+    
         </form>
       
       </main>
