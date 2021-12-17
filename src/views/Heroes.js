@@ -43,17 +43,8 @@ function Heroes() {
   
   return(
     <main>
-      <h1 className="centrar">Heroes</h1>
 
-      <div className="container grupos-fotos">
-       
-        {heroeMarvelView.map( heroe => (
-          <Heroe
-            key = {heroe.id}
-            heroe = {heroe}
-          />
-        ))}
-      </div>
+      <h1 className="centrar">Heroes</h1>
 
       {
         marvel.length === 0 
@@ -73,6 +64,17 @@ function Heroes() {
           </div>
         )
       }
+
+      <div className="container grupos-fotos">
+       
+        {heroeMarvelView.map( heroe => (
+          <Heroe
+            key = {heroe.id}
+            heroe = {heroe}
+          />
+        ))}
+      </div>
+
     </main>
   )
   

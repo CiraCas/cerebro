@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
-
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { UsuarioContext } from '../context/UsuarioContext';
+import logoMarvel from '../img/Marvel-Logo.png'
 
 
 const Navegador = () => {
 
     const { registered } = useContext(UsuarioContext);
+    const [select, setSelect] = useState('heroes');
 
     
     return ( 
@@ -15,21 +16,48 @@ const Navegador = () => {
           ?
           (
             <aside className="bo-aside">
+              <div className="bo-logo">
+                <img className="logo" src={logoMarvel} alt="logo"/>
+              </div>
             
               <nav>
                   <ul className="menu-navigation navegacion">
                   
                     <li>
-                        <Link to="/heroes">Heroes</Link>
+                        <Link 
+                          onClick={() => setSelect('heroes')}
+                          className={select === 'heroes'
+                          ? 'select'
+                          : 'no-select' }
+                          to="/heroes"
+                        >Heroes</Link>
                     </li>
                     <li>
-                        <Link to="/buscarheroe">Buscador</Link>
+                        <Link 
+                          onClick={() => setSelect('buscador')}
+                          className={select === 'buscador'
+                          ? 'select'
+                          : 'no-select' }
+                          to="/buscarheroe"
+                        >Buscador</Link>
                     </li>
                     <li>
-                        <Link to="/tablaheroes">Tabla Heroes</Link>
+                        <Link 
+                          onClick={() => setSelect('tabla')}
+                          className={select === 'tabla'
+                          ? 'select'
+                          : 'no-select' }
+                          to="/tablaheroes"
+                        >Tabla Heroes</Link>
                     </li>
                     <li>
-                        <Link to="/insertheroe">Agregar Heroe</Link>
+                        <Link 
+                          onClick={() => setSelect('agregar')}
+                          className={select === 'agregar'
+                          ? 'select'
+                          : 'no-select' }
+                          to="/insertheroe"
+                        >Agregar Heroe</Link>
                     </li>
                           
                   </ul>

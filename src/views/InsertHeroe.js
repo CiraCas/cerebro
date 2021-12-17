@@ -112,8 +112,7 @@ const InsertHeroe = () => {
             <div className='centrar'>
                 <h2>Agregar Heroe</h2> 
             </div>
-            {error? <p className="alerta-error">Campo nombre es obligatorio</p> 
-            : null}
+            
             
             <form
                 onSubmit={submitHeroe}
@@ -131,6 +130,8 @@ const InsertHeroe = () => {
                             onChange={grabarDatos}  
                             value={name} //para reiniciar
                         />
+                        {error? <p className="alerta-error">Campo nombre es obligatorio</p> 
+                        : null}
                     </div>
                     <div className="apartado-form">
                         <label>Imagen</label>

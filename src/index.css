@@ -1,9 +1,13 @@
 :root{
   --primario: rgb(94, 156, 243);
-  --primarioOscuro: rgb(18, 56, 108);
-  --secundario: rgb(184, 71, 6);
+  --primarioOscuro: #202020;
+  --secundario: #e62429;
   --error: red;
   --blanco: white;
+  --blancoRoto:#f6f6f6;
+  --blancoSucio:#b6b6b6;
+  --grisClaro: #393939;
+  --grisOscuro:#202020;
 
 }
 
@@ -23,7 +27,8 @@ body{
 }
  h1, h2{
    color: var(--secundario);
-   font-size: 2em;
+   font-size: 2.5em;
+   text-transform: uppercase;
  }
  h3 {
    font-size: 1.5em;
@@ -75,16 +80,19 @@ body{
 
 .grupo-foto {
 
-  background-color: var(--primarioOscuro);
+  background-color: var(--secundario);
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   margin-top: 2rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   padding: 1.5rem;
-  color: var(--secundario);
+  color: var(--blancoRoto);
 
+}
+.grupo-foto h3 {
+  color: var(--blanco)
 }
 
 .alerta-error {
@@ -96,7 +104,7 @@ body{
   text-align: right;
 } 
 .formulario-admin {
-  background-color: var(--primario);
+  background-color: var(--grisClaro);
   width: min(80rem, 100%); /*coge 700px o si es más pequeño el 100%. Evita usar media queries */
   margin: 0 auto;
   padding: 2rem;
@@ -106,7 +114,7 @@ body{
 
 .formulario-admin label,
 .formulario-admin legend {
-  color: var(--primarioOscuro);
+  color: var(--blanco);
   font-weight: bold;
   padding-bottom: 1rem;
 }
@@ -115,8 +123,8 @@ body{
   margin-top: 0.5rem;
 }
 .formulario-admin legend{
-  color: var(--primarioOscuro);
-  font-size: 1.8rem;
+  color: var(--blanco);
+  font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 2rem;
@@ -150,7 +158,7 @@ body{
   background-color:  var(--primarioOscuro);
   color: var(--blanco);
   text-decoration: none;
-  padding: 1rem 3rem;
+  padding: 1.5rem 3rem;
   margin-top: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
@@ -159,9 +167,11 @@ body{
   width: 90%;
   text-align: center;
   border: none;
+  transition: 0.1s;
 }
 .boton:hover{
   cursor: pointer;
+  color: var(--secundario)
 }
 @media (min-width: 768px) { 
   .boton{
@@ -200,22 +210,36 @@ body{
   list-style: none ;
 }
 
-.navegacion a {
+.no-select {
   display: block;
   text-align: center;
   text-transform: uppercase;
-  padding: 1rem;
-  color: var(--primarioOscuro);
+  padding: 5rem;
+  color: var(--blancoSucio);
   text-decoration: none;
   font-size: 2rem;
   font-weight: bold;
+  transition: 0.5s;
+  border-bottom: 2px solid var(--grisClaro);
 
 }
-.navegacion a:hover{
+.no-select:hover{
   color: var(--blanco);
-  background-color: var(--primarioOscuro);
-  border-radius: 10px;
+  border-bottom: 3px solid var(--secundario);
   
+  
+}
+.select {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 5rem;
+  color: var(--secundario);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: 0.2s;
+  border-bottom: 3px solid var(--secundario);
 }
 
 .fas {
@@ -246,6 +270,7 @@ body{
   width: 100%;
   padding: 1rem;
   box-sizing: border-box;
+  background-color: var(--blancoRoto);
 }
 
 @media only screen and (min-width:768px){
@@ -259,7 +284,7 @@ body{
 
 .bo-aside{
   width: 100%;
-  background-color: var(--primario);
+  background-color: var(--primarioOscuro);
   
   padding: 1rem;
   box-sizing: border-box;
@@ -302,4 +327,12 @@ body{
 }
 .bo-aside .menu-navigation .menu-list .menu-list-item.activa {
   background-color: var(--primario);
+}
+
+
+.bo-aside .bo-logo .logo{
+  width: 100%;
+  height: auto;
+  margin-bottom: 10rem;
+  
 }
