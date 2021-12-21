@@ -23,14 +23,14 @@ const Ruta = () => {
           ?
           (
             <div
-            className="bo-flex-container"
+            className="flex-container"
             >
             
                 <Navegador/>
             
                 
             <section
-                className="bo-main"
+                className="main"
             >
                 <Desconectar/>
                 <Switch>

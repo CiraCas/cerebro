@@ -15,8 +15,8 @@ const Navegador = () => {
         {registered
           ?
           (
-            <aside className="bo-aside">
-              <div className="bo-logo">
+            <aside className="aside">
+              <div className="logo">
                 <img className="logo" src={logoMarvel} alt="logo"/>
               </div>
             

@@ -1,4 +1,5 @@
-import Ruta from "./utils/router";
+import Ruta from "./components/router";
+import ErrorProvider from "./context/ErrorContext";
 
 /* import Login from "./views/Login";
 import Heroes from "./views/Heroes";
@@ -22,44 +23,46 @@ function App() {
 
   return (
     <UsuarioProvider>
-      <Ruta/>
-      {/* <Router>
-        <div
-          className="bo-flex-container"
-        >
-         
-            <Navegador/>
-          
-            
-          <section
-            className="bo-main"
+      <ErrorProvider>
+        <Ruta/>
+        {/* <Router>
+          <div
+            className="bo-flex-container"
           >
-            <Desconectar/>
-            <Switch>
-              <Route path="/insertuser">
-                <InsertUser />
-              </Route>
-              <Route path="/insertheroe">
-                <InsertHeroe />
-              </Route>
-              <Route path="/tablaheroes">
-                <TablaHeroes />
-              </Route>
-              <Route path="/buscarheroe">
-                <BuscarHeroe />
-              </Route>
-              <Route path="/heroes">
-                <Heroes />
-              </Route>
-              <Route path="/">
-                <Login />
-              </Route>
-            </Switch>
-          </section>
-        </div>
-        
-        
-      </Router> */}
+          
+              <Navegador/>
+            
+              
+            <section
+              className="bo-main"
+            >
+              <Desconectar/>
+              <Switch>
+                <Route path="/insertuser">
+                  <InsertUser />
+                </Route>
+                <Route path="/insertheroe">
+                  <InsertHeroe />
+                </Route>
+                <Route path="/tablaheroes">
+                  <TablaHeroes />
+                </Route>
+                <Route path="/buscarheroe">
+                  <BuscarHeroe />
+                </Route>
+                <Route path="/heroes">
+                  <Heroes />
+                </Route>
+                <Route path="/">
+                  <Login />
+                </Route>
+              </Switch>
+            </section>
+          </div>
+          
+          
+        </Router> */}
+      </ErrorProvider>
     </UsuarioProvider>
   );
 }

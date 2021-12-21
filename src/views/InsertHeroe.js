@@ -3,6 +3,7 @@ import { postCall } from "../utils/calls";
 
 import { useHistory } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
+import { ErrorContext } from '../context/ErrorContext';
 
 
 const InsertHeroe = () => {
@@ -19,6 +20,7 @@ const InsertHeroe = () => {
     const { name, description } = heroeForm;
     const [error, setError] = useState(false);
     const { registered } = useContext(UsuarioContext);
+    const { setMsgError, msgError } = useContext(ErrorContext);
     const history = useHistory();
 
     if(!registered){
@@ -91,7 +93,8 @@ const InsertHeroe = () => {
         e.preventDefault();
         
         if(name.trim() === ''){
-           setError(true)
+           setError(true);
+           setMsgError('Campo nombre es obligatorio');
            return; 
         }else setError(false)
 
@@ -130,7 +133,7 @@ const InsertHeroe = () => {
                             onChange={grabarDatos}  
                             value={name} //para reiniciar
                         />
-                        {error? <p className="alerta-error">Campo nombre es obligatorio</p> 
+                        {error? <p className="alerta-error">{msgError}</p> 
                         : null}
                     </div>
                     <div className="apartado-form">
