@@ -6,20 +6,19 @@ import {
 } from 'react-router-dom';
 
 import { UsuarioContext } from '../context/UsuarioContext';
+import { ErrorContext } from '../context/ErrorContext';
 import { searchCall} from "../utils/calls";
  
 
 function Login() {
 
-  const [confirmar, setConfirmar] = useState(false)
-  
+  const [error, setError] = useState(false);
   const history = useHistory();
  
-  const { setUsuario, setUsuSearch, setRegistered, usuario, usuSearch, registered } = useContext(UsuarioContext);
+  const { setUsuario, setUsuSearch, setRegistered, usuario, usuSearch } = useContext(UsuarioContext);
+  const { setMsgError, msgError } = useContext(ErrorContext);
 
   const { name,  password } = usuario;
-
-  const [error, setError] = useState(false);
 
   let url = `https://localhost:44354/api/users`
 
@@ -27,7 +26,6 @@ function Login() {
       searchCall(url).then(
       result => {
           setUsuSearch(result.data)
-          console.log(usuSearch[0])
       }
       ).catch(console.log);
   }, [])
@@ -44,24 +42,26 @@ function Login() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    setConfirmar(false)
+    setError(false);
     if ( name.trim() === '' || password.trim() === ''){
-      setError (true)
+      setError ( true );
+      setMsgError ('Todos los campos son obligatorios');
       return
     }else setError(false)
 
     usuSearch.forEach(usu => {
       if( name === usu.name && password === usu.password ){
         setRegistered(true);
-        //setConfirmar(false);
+        setError(false);
         history.push('/heroes');
         return;
-      }else setConfirmar(true)
+      }else {
+        setError ( true );
+        setMsgError ('Los datos no coinciden');
+      }
       
       }
-    );
-    
-    
+    ); 
     
   }
 
@@ -77,32 +77,34 @@ function Login() {
           <fieldset>
               <legend>Regístrate</legend>
               
-                <label>Nombre</label>
-                <input 
-                  className="input-text" 
-                  type="text" 
-                  name="name" 
-                  placeholder="Tu Nombre"
-                  onChange={handleChange}
-                />
-            
-                <label>Contraseña</label>
-                <input 
-                  className="input-text" 
-                  type="password" 
-                  name="password" 
-                  placeholder="Tu Contraseña"
-                  onChange={handleChange}
-                /> 
-                 
-                {error? <p className = "alerta-error">Todos los campos son obligatorios</p> 
-                : null}
-                {confirmar? <p className = "alerta-error">Los datos no coinciden</p> 
-                : null}
-                <Link to="/InsertUser">¿No tienes cuenta?</Link>
-              <div 
-                className="alin-derecha"
-              >
+              <label>Nombre</label>
+              <input 
+                className="input-text" 
+                type="text" 
+                name="name" 
+                placeholder="Tu Nombre"
+                onChange={handleChange}
+              />
+          
+              <label>Contraseña</label>
+              <input 
+                className="input-text" 
+                type="password" 
+                name="password" 
+                placeholder="Tu Contraseña"
+                onChange={handleChange}
+              /> 
+                
+              {error? <p className = "alerta-error">{msgError}</p> 
+              : null}
+              {/* {confirmar? <p className = "alerta-error">Los datos no coinciden</p> 
+              : null} */}
+
+              <Link 
+                to="/InsertUser"
+              >¿No tienes cuenta?</Link>
+
+              <div className="alin-derecha">
                 <button 
                   type="submit"
                   className="boton"

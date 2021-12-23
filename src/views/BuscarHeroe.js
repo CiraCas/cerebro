@@ -99,14 +99,12 @@ const BuscarHeroe = () => {
   }, [letra, url]) 
 
   return ( 
-    <main
-    className="container"
-    >
-      <h2
-      className='centrar'
-      >Busca Heroe</h2>
+    <main>
+      <h2 className='centrar'>
+        Busca Heroe
+      </h2>
       <input
-      className="input-heroe"
+        className="input-heroe"
         onChange={buscarHeroe}
         placeholder="Busca Heroe"
       />

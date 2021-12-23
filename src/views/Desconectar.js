@@ -4,7 +4,7 @@ import { UsuarioContext } from '../context/UsuarioContext';
 
 const Desconectar = () => {
 
-    const { setRegistered, setUsuario } = useContext(UsuarioContext);
+    const { setRegistered, setUsuario, registered, usuario } = useContext(UsuarioContext);
     const history = useHistory();
 
     const disconnect = () => {
@@ -18,17 +18,23 @@ const Desconectar = () => {
 
     }
     return ( 
-        <div
-            className="alin-derecha"
-        >
-            
-            <i 
-            type="button"
-            onClick={disconnect}
-            className="fas fa-sign-out-alt">
-            </i>
-            
-        </div> 
+        <>
+            {registered
+                ?
+                (
+                    <div className="alin-derecha">
+                        <h3>Hola {usuario.name}</h3>
+                        <i 
+                            type="button"
+                            onClick={disconnect}
+                            className="fas fa-sign-out-alt">
+                        </i>
+                        
+                    </div> 
+                )
+                : null
+            }
+        </>
     );
         
         
