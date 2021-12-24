@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
-import Login from "../views/Login";
-import Heroes from "../views/Heroes";
-import BuscarHeroe from "../views/BuscarHeroe";
-import TablaHeroes from "../views/TablaHeroes";
-import InsertHeroe from "../views/InsertHeroe";
-import Navegador from "../views/Navegador";
-import InsertUser from "../views/InsertUser";
-import Desconectar from "../views/Desconectar";
+import Login from "./views/Login";
+import Heroes from "./views/Heroes";
+import BuscarHeroe from "./views/BuscarHeroe";
+import TablaHeroes from "./views/TablaHeroes";
+import InsertHeroe from "./views/InsertHeroe";
+import Navegador from "./views/Navegador";
+import InsertUser from "./views/InsertUser";
+import Desconectar from "./views/Desconectar";
 
 import { 
     BrowserRouter as Router,
     Switch,
     Route } from "react-router-dom";
-import { UsuarioContext } from '../context/UsuarioContext';
+import { UsuarioContext } from './context/UsuarioContext';
 
 const Ruta = () => {
     const { registered } = useContext(UsuarioContext);

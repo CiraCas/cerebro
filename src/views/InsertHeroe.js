@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { postCall } from "../utils/calls"; 
-
 import { useHistory } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
-import { ErrorContext } from '../context/ErrorContext';
+import { error } from "../common/error";
 
 
 const InsertHeroe = () => {
@@ -13,14 +12,13 @@ const InsertHeroe = () => {
         description: '',
         img:'',
         image:''
-
     });
+    const [showError, setShowError] = useState(false);
+    const [msgError, setMsgError] = useState('');
     const [heroe, setHeroe] = useState({});
     const [controlCambio, setControlCambio] = useState(false);
     const { name, description } = heroeForm;
-    const [error, setError] = useState(false);
     const { registered } = useContext(UsuarioContext);
-    const { setMsgError, msgError } = useContext(ErrorContext);
     const history = useHistory();
 
     if(!registered){
@@ -93,16 +91,14 @@ const InsertHeroe = () => {
         e.preventDefault();
         
         if(name.trim() === ''){
-           setError(true);
+           setShowError(true);
            setMsgError('Campo nombre es obligatorio');
            return; 
-        }else setError(false)
+        }else setShowError(false)
 
-       
         mandarHeroe ();
 
-        //Reiniciar el form
-        setHeroeForm({ //para que se reinicie se ha de poner el valor en cada input con value = {elquesea}
+        setHeroeForm({
             name: '',
             description: '',
             img: '',
@@ -131,10 +127,9 @@ const InsertHeroe = () => {
                             placeholder="nombre heroe"
                             className="input-text"
                             onChange={grabarDatos}  
-                            value={name} //para reiniciar
+                            value={name} 
                         />
-                        {error? <p className="alerta-error">{msgError}</p> 
-                        : null}
+                        {error( showError, msgError )} 
                     </div>
                     <div className="apartado-form">
                         <label>Imagen</label>

@@ -6,18 +6,16 @@ import {
 } from 'react-router-dom';
 
 import { UsuarioContext } from '../context/UsuarioContext';
-import { ErrorContext } from '../context/ErrorContext';
-import { searchCall} from "../utils/calls";
+import { searchCall } from "../utils/calls";
+import { error } from "../common/error";
  
 
 function Login() {
 
-  const [error, setError] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [msgError, setMsgError] = useState('');
   const history = useHistory();
- 
   const { setUsuario, setUsuSearch, setRegistered, usuario, usuSearch } = useContext(UsuarioContext);
-  const { setMsgError, msgError } = useContext(ErrorContext);
-
   const { name,  password } = usuario;
 
   let url = `https://localhost:44354/api/users`
@@ -42,21 +40,21 @@ function Login() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(false);
+    setShowError(false);
     if ( name.trim() === '' || password.trim() === ''){
-      setError ( true );
+      setShowError ( true );
       setMsgError ('Todos los campos son obligatorios');
       return
-    }else setError(false)
+    }else setShowError(false)
 
     usuSearch.forEach(usu => {
       if( name === usu.name && password === usu.password ){
         setRegistered(true);
-        setError(false);
+        setShowError(false);
         history.push('/heroes');
         return;
       }else {
-        setError ( true );
+        setShowError ( true );
         setMsgError ('Los datos no coinciden');
       }
       
@@ -95,11 +93,7 @@ function Login() {
                 onChange={handleChange}
               /> 
                 
-              {error? <p className = "alerta-error">{msgError}</p> 
-              : null}
-              {/* {confirmar? <p className = "alerta-error">Los datos no coinciden</p> 
-              : null} */}
-
+              {error( showError, msgError )} 
               <Link 
                 to="/InsertUser"
               >¿No tienes cuenta?</Link>
