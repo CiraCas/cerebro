@@ -12,6 +12,10 @@ const postCall = (heroe) => {
 
 }
 
+const putCall = (heroe) => {
+    return axios.put(`https://localhost:44354/api/heroes/${heroe.id}`, heroe );
+}
+
 const postCallUser = (user) => {
     //debugger
     return axios.post('https://localhost:44354/api/users', user );
@@ -22,5 +26,5 @@ const searchCall = (url) => {
 }
 
 export {
-    simpleCall, searchCall, postCall, postCallUser
+    simpleCall, searchCall, postCall, postCallUser, putCall
 }

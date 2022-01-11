@@ -63,13 +63,19 @@ body{
   column-gap: 2rem;
 
 }
-@media (min-width: 840px) {
+
+@media (min-width: 1020px) {
   .grupos-fotos {
     grid-template-columns: 1fr 1fr;
   }
 }
+@media (min-width: 1400px) {
+  .grupos-fotos {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 
-@media (min-width: 1330px) {
+@media (min-width: 1700px) {
 
   .grupos-fotos{
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -88,6 +94,7 @@ body{
   border-radius: 0.5rem;
   padding: 1.5rem;
   color: var(--blancoRoto);
+
 
 }
 .grupo-foto h3 {
@@ -334,4 +341,13 @@ body{
   height: auto;
   margin-bottom: 10rem;
   
+}
+
+.botones{
+  display: flex;
+  
+}
+.botones button{
+  
+  margin: 5px;
 }

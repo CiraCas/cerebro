@@ -13,10 +13,10 @@ const InsertHeroe = () => {
         img:'',
         image:''
     });
-    const [showError, setShowError] = useState(false);
-    const [msgError, setMsgError] = useState('');
-    const [heroe, setHeroe] = useState({});
-    const [controlCambio, setControlCambio] = useState(false);
+    const [ showError, setShowError ] = useState(false);
+    const [ msgError, setMsgError ] = useState('');
+    const [ heroe, setHeroe ] = useState({});
+    const [ controlCambio, setControlCambio ] = useState(false);
     const { name, description } = heroeForm;
     const { registered } = useContext(UsuarioContext);
     const history = useHistory();
