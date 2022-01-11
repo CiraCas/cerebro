@@ -79,6 +79,7 @@ const ModifHeroe = () => {
               ).catch(console.log);
 
             setControlCambio(false);
+            history.push('/buscarheroe')
         }
         
       }, [heroe]) 
