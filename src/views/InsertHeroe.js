@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { searchCall, postCall, putCall } from "../utils/calls"; 
 import { useHistory, useParams } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
+import { NavegadorContext } from '../context/NavegadorContext';
 import { error } from "../common/error";
 
 
@@ -18,7 +19,8 @@ const InsertHeroe = () => {
     const [ heroe, setHeroe ] = useState({});
     const [ controlCambio, setControlCambio ] = useState(false);
     const { name, description } = heroeForm;
-    const { registered } = useContext(UsuarioContext);
+    const { registered } = useContext( UsuarioContext );
+    const { setSelect } = useContext( NavegadorContext );
     const { id }= useParams();
     const history = useHistory();
     const url = `https://localhost:44354/api/heroes/${id}`;
@@ -86,9 +88,7 @@ const InsertHeroe = () => {
             ...heroeForm
         })
     }
-    if( id === 'null' ) {
-        
-    }
+
     useEffect(() => {
         if(controlCambio === true){
             if( id === 'null') {
@@ -105,7 +105,7 @@ const InsertHeroe = () => {
                       console.log(result.data);
                     }
                   ).catch(console.log);
-    
+                setSelect( 'buscador' );    
                 history.push('/buscarheroe')
             }
             
