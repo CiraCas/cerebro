@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { postCall } from "../utils/calls"; 
-
-import { useHistory } from 'react-router-dom';
+import { searchCall, postCall, putCall } from "../utils/calls"; 
+import { useHistory, useParams } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
-import { ErrorContext } from '../context/ErrorContext';
+import { NavegadorContext } from '../context/NavegadorContext';
+import { error } from "../common/error";
 
 
 const InsertHeroe = () => {
@@ -13,20 +13,34 @@ const InsertHeroe = () => {
         description: '',
         img:'',
         image:''
-
     });
-    const [heroe, setHeroe] = useState({});
-    const [controlCambio, setControlCambio] = useState(false);
+    const [ showError, setShowError ] = useState(false);
+    const [ msgError, setMsgError ] = useState('');
+    const [ heroe, setHeroe ] = useState({});
+    const [ controlCambio, setControlCambio ] = useState(false);
     const { name, description } = heroeForm;
-    const [error, setError] = useState(false);
-    const { registered } = useContext(UsuarioContext);
-    const { setMsgError, msgError } = useContext(ErrorContext);
+    const { registered } = useContext( UsuarioContext );
+    const { setSelect } = useContext( NavegadorContext );
+    const { id }= useParams();
     const history = useHistory();
+    const url = `https://localhost:44354/api/heroes/${id}`;
 
     if(!registered){
         history.push('/')
     
     }
+    useEffect(() => {
+        if( id !== 'null') {
+            searchCall(url).then(
+                result => {
+                  setHeroeForm(result.data) 
+                  console.log(result.data)
+                }
+              ).catch(console.log);
+        }
+         
+       
+      }, [ url])
 
     const grabarImg = e => {
 
@@ -74,14 +88,27 @@ const InsertHeroe = () => {
             ...heroeForm
         })
     }
+
     useEffect(() => {
         if(controlCambio === true){
-            postCall(heroe).then(
-                result => {
-                  console.log(result);
-                  console.log(result.data);
-                }
-              ).catch(console.log);
+            if( id === 'null') {
+                postCall(heroe).then(
+                    result => {
+                      console.log(result);
+                      console.log(result.data);
+                    }
+                  ).catch(console.log);
+            }else{
+                putCall(heroe).then(
+                    result => {
+                      console.log(result);
+                      console.log(result.data);
+                    }
+                  ).catch(console.log);
+                setSelect( 'buscador' );    
+                history.push('/buscarheroe')
+            }
+            
 
             setControlCambio(false);
         }
@@ -93,16 +120,14 @@ const InsertHeroe = () => {
         e.preventDefault();
         
         if(name.trim() === ''){
-           setError(true);
+           setShowError(true);
            setMsgError('Campo nombre es obligatorio');
            return; 
-        }else setError(false)
+        }else setShowError(false)
 
-       
         mandarHeroe ();
 
-        //Reiniciar el form
-        setHeroeForm({ //para que se reinicie se ha de poner el valor en cada input con value = {elquesea}
+        setHeroeForm({
             name: '',
             description: '',
             img: '',
@@ -113,7 +138,7 @@ const InsertHeroe = () => {
     return (         
         <main>
             <div className='centrar'>
-                <h2>Agregar Heroe</h2> 
+                <h2>Heroe</h2> 
             </div>
             
             
@@ -122,7 +147,7 @@ const InsertHeroe = () => {
                 className="formulario-admin"
             >
                 <fieldset>
-                    <legend> Nuevo Heroe</legend>
+                    <legend> Agregar o Modificar Heroe </legend>
                     <div className="apartado-form">
                         <label>Nombre Heroe*</label>
                         <input
@@ -131,10 +156,9 @@ const InsertHeroe = () => {
                             placeholder="nombre heroe"
                             className="input-text"
                             onChange={grabarDatos}  
-                            value={name} //para reiniciar
+                            value={name} 
                         />
-                        {error? <p className="alerta-error">{msgError}</p> 
-                        : null}
+                        {error( showError, msgError )} 
                     </div>
                     <div className="apartado-form">
                         <label>Imagen</label>
@@ -162,7 +186,7 @@ const InsertHeroe = () => {
                             type="submit"
                             className="boton"
                         >
-                            Agregar Heroe
+                            Guardar Heroe
                         </button>
                     </div>
                     

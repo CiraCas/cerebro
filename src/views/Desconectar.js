@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
+import { NavegadorContext } from "../context/NavegadorContext";
 
 const Desconectar = () => {
 
-    const { setRegistered, setUsuario, registered, usuario } = useContext(UsuarioContext);
+    const { setRegistered, setUsuario, registered, usuario } = useContext( UsuarioContext );
+    const { setSelect } = useContext ( NavegadorContext );
     const history = useHistory();
 
     const disconnect = () => {
@@ -13,6 +15,7 @@ const Desconectar = () => {
             name: '',
             password: ''
         });
+        setSelect ( 'heroes' );
         history.push('/');
 
 

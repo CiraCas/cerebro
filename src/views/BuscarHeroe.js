@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import Heroe from '../components/Heroe';
 import { searchCall, simpleCall} from "../utils/calls"; 
-
 import { useHistory } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
 
@@ -69,7 +68,7 @@ const BuscarHeroe = () => {
 
   // ------------------------------------------Buscador en la api de Marvel-----------------------------------------------------
 
-  const [letra, setLetra] = useState('a');
+  const [letra, setLetra] = useState('');
 
   let url = `https://localhost:44354/api/heroes/name/${letra}`
 
@@ -88,12 +87,22 @@ const BuscarHeroe = () => {
       history.push('/')
   
     }else{
-      searchCall(url).then(
-        result => {
-          //setHeroes(result.data.data.results)
-          setHeroes(result.data)
-        }
-      ).catch(console.log);
+      if(letra === ''){
+        simpleCall().then(
+          result => {
+            //setHeroes(result.data.data.results)
+            setHeroes(result.data)
+          }
+        ).catch(console.log);
+      }else{
+        searchCall(url).then(
+          result => {
+            //setHeroes(result.data.data.results)
+            setHeroes(result.data)
+          }
+        ).catch(console.log);
+      }
+      
     }
    
   }, [letra, url]) 

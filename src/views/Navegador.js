@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { UsuarioContext } from '../context/UsuarioContext';
+import { NavegadorContext } from '../context/NavegadorContext';
 import logoMarvel from '../img/Marvel-Logo.png'
 
 
 const Navegador = () => {
 
     const { registered } = useContext(UsuarioContext);
-    const [select, setSelect] = useState('heroes');
+    //const [ select, setSelect ] = useState('heroes');
+    const { setSelect, select } = useContext ( NavegadorContext );
 
     
     return ( 
@@ -56,7 +58,7 @@ const Navegador = () => {
                           className={select === 'agregar'
                           ? 'select'
                           : 'no-select' }
-                          to="/insertheroe"
+                          to="/insertheroe/null"
                         >Agregar Heroe</Link>
                     </li>
                           

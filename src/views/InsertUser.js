@@ -1,14 +1,13 @@
 import React, { useState, useContext, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
-import { ErrorContext } from '../context/ErrorContext';
 import { searchCall, postCallUser } from "../utils/calls";
+import { error } from "../common/error";
 
 const InsertUser = () => {
 
-    const [ error, setError ] = useState(false);
-    //const [ confirmar, setConfirmar ] = useState(false);
-    //const [ exists, setExists ] = useState(false);
+    const [showError, setShowError] = useState(false);
+    const [msgError, setMsgError] = useState('');
     const [ newUsu, setNewUsu ] = useState({
         name: '',
         password: '',
@@ -19,7 +18,6 @@ const InsertUser = () => {
     const history = useHistory();
     const { name, password, password2 } = newUsu;
     const { usuSearch, setUsuSearch } = useContext(UsuarioContext);
-    const { setMsgError, msgError } = useContext(ErrorContext);
 
     let url = `https://localhost:44354/api/users`;
 
@@ -58,23 +56,18 @@ const InsertUser = () => {
     }
     const handleSubmit = (e) => { 
         e.preventDefault();
-        //setExists (false);
-        //setConfirmar ( false );
-        setError(false);
         setControlCambio( false );
        
         if ( name.trim() === '' || password.trim() === '' || password2.trim() === ''){
-            setError ( true );
-            setMsgError('Todos los campos son obligatorios');
-            return;
-          
-        }/* else setError(false) */
+          setShowError ( true );
+          setMsgError('Todos los campos son obligatorios');
+          return;  
+        }
 
         if ( password !== password2){
-            //setConfirmar ( true );
-            setError ( true );
-            setMsgError('Las contraseñas no coinciden');
-            return;
+          setShowError ( true );
+          setMsgError('Las contraseñas no coinciden');
+          return;
         }
 
         /* usuSearch.forEach(usu => {
@@ -87,8 +80,7 @@ const InsertUser = () => {
         ); */
 
         if(usuSearch.some(elem => elem.name === name)){
-          //setExists (true) ;
-          setError ( true );
+          setShowError ( true );
           setMsgError('Nombre de usuario ya registrado');
           return;
         }
@@ -151,13 +143,7 @@ const InsertUser = () => {
                     onChange={handleChange}
                     value={password2}
                   /> 
-                  
-                  {error? <p className = "alerta-error">{msgError}</p> 
-                  : null}
-                  {/* {confirmar? <p className = "alerta-error">Las contraseñas no coinciden</p> 
-                  : null}
-                  {exists? <p className = "alerta-error">Nombre de usuario ya registrado</p> 
-                  : null} */}
+                  {error( showError, msgError )} 
                 <div className="alin-derecha">
                   <button 
                     type="submit"
