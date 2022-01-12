@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { postCall } from "../utils/calls"; 
-import { useHistory } from 'react-router-dom';
+import { searchCall, postCall, putCall } from "../utils/calls"; 
+import { useHistory, useParams } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
 import { error } from "../common/error";
 
@@ -19,12 +19,26 @@ const InsertHeroe = () => {
     const [ controlCambio, setControlCambio ] = useState(false);
     const { name, description } = heroeForm;
     const { registered } = useContext(UsuarioContext);
+    const { id }= useParams();
     const history = useHistory();
+    const url = `https://localhost:44354/api/heroes/${id}`;
 
     if(!registered){
         history.push('/')
     
     }
+    useEffect(() => {
+        if( id !== 'null') {
+            searchCall(url).then(
+                result => {
+                  setHeroeForm(result.data) 
+                  console.log(result.data)
+                }
+              ).catch(console.log);
+        }
+         
+       
+      }, [ url])
 
     const grabarImg = e => {
 
@@ -72,14 +86,29 @@ const InsertHeroe = () => {
             ...heroeForm
         })
     }
+    if( id === 'null' ) {
+        
+    }
     useEffect(() => {
         if(controlCambio === true){
-            postCall(heroe).then(
-                result => {
-                  console.log(result);
-                  console.log(result.data);
-                }
-              ).catch(console.log);
+            if( id === 'null') {
+                postCall(heroe).then(
+                    result => {
+                      console.log(result);
+                      console.log(result.data);
+                    }
+                  ).catch(console.log);
+            }else{
+                putCall(heroe).then(
+                    result => {
+                      console.log(result);
+                      console.log(result.data);
+                    }
+                  ).catch(console.log);
+    
+                history.push('/buscarheroe')
+            }
+            
 
             setControlCambio(false);
         }
@@ -109,7 +138,7 @@ const InsertHeroe = () => {
     return (         
         <main>
             <div className='centrar'>
-                <h2>Agregar Heroe</h2> 
+                <h2>Heroe</h2> 
             </div>
             
             
@@ -118,7 +147,7 @@ const InsertHeroe = () => {
                 className="formulario-admin"
             >
                 <fieldset>
-                    <legend> Nuevo Heroe</legend>
+                    <legend> Agregar o Modificar Heroe </legend>
                     <div className="apartado-form">
                         <label>Nombre Heroe*</label>
                         <input
@@ -157,7 +186,7 @@ const InsertHeroe = () => {
                             type="submit"
                             className="boton"
                         >
-                            Agregar Heroe
+                            Guardar Heroe
                         </button>
                     </div>
                     

@@ -35,7 +35,7 @@ const Heroe = ({heroe}) => {
     }
 
     const modificar = id => {
-        history.push(`/modifheroe/${id}`);
+        history.push(`/insertheroe/${id}`);
     }
     return ( 
         <div className="grupo-foto" key={heroe.id}>

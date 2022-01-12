@@ -56,7 +56,7 @@ const Navegador = () => {
                           className={select === 'agregar'
                           ? 'select'
                           : 'no-select' }
-                          to="/insertheroe"
+                          to="/insertheroe/null"
                         >Agregar Heroe</Link>
                     </li>
                           

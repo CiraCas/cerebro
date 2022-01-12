@@ -8,7 +8,6 @@ import InsertHeroe from "./views/InsertHeroe";
 import Navegador from "./views/Navegador";
 import InsertUser from "./views/InsertUser";
 import Desconectar from "./views/Desconectar";
-import ModifHeroe from './views/ModifHeroe';
 
 import { 
     BrowserRouter as Router,
@@ -36,10 +35,7 @@ const Ruta = () => {
             >
                 <Desconectar/>
                 <Switch>
-                    <Route path="/modifheroe/:id">
-                        <ModifHeroe />
-                    </Route>
-                    <Route path="/insertheroe">
+                    <Route path="/insertheroe/:id">
                         <InsertHeroe />
                     </Route>
                     <Route path="/tablaheroes">
