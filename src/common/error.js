@@ -1,11 +1,10 @@
 
-const error = ( error , msgError ) => {
+const error = ( error, msgError ) => {
 
     return ( 
-        
         <>
-        {error? <p className = "alerta-error">{msgError}</p> 
-        : null}
+            {error? <p className = "alerta-error">{msgError}</p> 
+            : null}
         </> 
      );
 }

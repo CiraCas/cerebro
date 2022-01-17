@@ -7,6 +7,10 @@ import { UsuarioContext } from '../context/UsuarioContext';
 const BuscarHeroe = () => {
   const { registered } = useContext(UsuarioContext);
   const history = useHistory();
+  const [actualizar, setActualizar] = useState('false');
+  const actualizarHeroes = () => {
+    setActualizar( 'true' );
+  }
 
   /* const [ letra, setLetra ] = useState('');
   const [ marvel, setMarvel ] = useState([]);
@@ -102,10 +106,11 @@ const BuscarHeroe = () => {
           }
         ).catch(console.log);
       }
+      setActualizar( 'false' );
       
     }
    
-  }, [letra, url]) 
+  }, [letra, url, actualizar]) 
 
   return ( 
     <main>
@@ -123,6 +128,7 @@ const BuscarHeroe = () => {
           <Heroe
             key = {heroe.id}
             heroe = {heroe}
+            actualizarHeroes = {actualizarHeroes}
           />
         ))} 
       </div>

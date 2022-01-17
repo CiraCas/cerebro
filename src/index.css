@@ -40,6 +40,14 @@ body{
    padding: 0;
    
  }
+
+ a {
+   text-decoration: none;
+ }
+
+ input {
+   margin-bottom: 2.5rem;
+ }
  .container{
     max-width: 130rem;
     /*margin: 0 auto 0 auto; ponemos todos los margin en 1 en orden: top, right, bottom, left*/
@@ -69,6 +77,7 @@ body{
     grid-template-columns: 1fr 1fr;
   }
 }
+
 @media (min-width: 1400px) {
   .grupos-fotos {
     grid-template-columns: 1fr 1fr 1fr;
@@ -84,7 +93,6 @@ body{
 }
 
 .grupo-foto {
-
   background-color: var(--secundario);
   display: flex;
   flex-direction: column;
@@ -95,8 +103,6 @@ body{
   border-radius: 0.5rem;
   padding: 1.5rem;
   color: var(--blancoRoto);
-
-
 }
 .contenido {
   display: flex;
@@ -254,17 +260,25 @@ body{
   border-bottom: 3px solid var(--secundario);
 }
 
+.fa-sign-out-alt{
+  font-size: 30px;
+  margin-top: 1.5rem;
+}
 .fas {
   color: var(--primarioOscuro);
-  font-size: 30px;
   padding: 1rem;
   margin-right: 2rem;
-  margin-top: 1.5rem;
+ 
   
+}
+.fas-p {
+  font-size: 15px;
+  margin-top: 0.5rem;
 }
 
 .fas:hover{
   color: var(--secundario);
+  cursor: pointer;
 }
 
 /*nuevo diseño*/
@@ -356,4 +370,7 @@ body{
 .botones button{
   
   margin: 5px;
+}
+.red{
+  color: var(--secundario);
 }

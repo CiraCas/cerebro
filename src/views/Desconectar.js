@@ -10,14 +10,15 @@ const Desconectar = () => {
     const history = useHistory();
 
     const disconnect = () => {
-        setRegistered(false);
+
+        
         setUsuario({
             name: '',
             password: ''
         });
         setSelect ( 'heroes' );
+        setRegistered(false);
         history.push('/');
-
 
     }
     return ( 
@@ -31,8 +32,8 @@ const Desconectar = () => {
                             type="button"
                             onClick={disconnect}
                             className="fas fa-sign-out-alt">
-                        </i>
-                        
+                            <p className="fas-p">Desconectar</p>
+                        </i>           
                     </div> 
                 )
                 : null

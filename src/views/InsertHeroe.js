@@ -3,7 +3,9 @@ import { searchCall, postCall, putCall } from "../utils/calls";
 import { useHistory, useParams } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
 import { NavegadorContext } from '../context/NavegadorContext';
+import { ModalContext } from '../context/ModalContext';
 import { error } from "../common/error";
+import Modal from '../components/Modal';
 
 
 const InsertHeroe = () => {
@@ -21,6 +23,7 @@ const InsertHeroe = () => {
     const { name, description } = heroeForm;
     const { registered } = useContext( UsuarioContext );
     const { setSelect } = useContext( NavegadorContext );
+    const { setMensaje } = useContext ( ModalContext );
     const { id }= useParams();
     const history = useHistory();
     const url = `https://localhost:44354/api/heroes/${id}`;
@@ -98,6 +101,7 @@ const InsertHeroe = () => {
                       console.log(result.data);
                     }
                   ).catch(console.log);
+                  setMensaje('Heroe creado');
             }else{
                 putCall(heroe).then(
                     result => {
@@ -105,10 +109,12 @@ const InsertHeroe = () => {
                       console.log(result.data);
                     }
                   ).catch(console.log);
-                setSelect( 'buscador' );    
-                history.push('/buscarheroe')
+                setSelect( 'buscador' );  
+                setMensaje('Heroe actualizado');  
+                //history.push('/buscarheroe')
             }
             
+            document.getElementById('ms').showModal();
 
             setControlCambio(false);
         }
@@ -192,6 +198,12 @@ const InsertHeroe = () => {
                     
                 </fieldset>
             </form>
+            {id !== 'null'
+            ? <Modal
+                ruta='/buscarheroe'
+            />
+            :<Modal/>
+            }
         </main> 
         );
 }

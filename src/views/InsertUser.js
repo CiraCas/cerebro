@@ -1,10 +1,15 @@
 import React, { useState, useContext, useEffect} from 'react';
-import { useHistory } from 'react-router-dom';
+import Modal from '../components/Modal';
+import { useHistory, Link } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
+import { ModalContext } from '../context/ModalContext';
 import { searchCall, postCallUser } from "../utils/calls";
 import { error } from "../common/error";
 
+
+
 const InsertUser = () => {
+  
 
     const [showError, setShowError] = useState(false);
     const [msgError, setMsgError] = useState('');
@@ -14,10 +19,11 @@ const InsertUser = () => {
         password2: ''
     });
     const [controlCambio, setControlCambio] = useState(false);
-    const [usu, setUsu] = useState({})
+    const [usu, setUsu] = useState({});
     const history = useHistory();
     const { name, password, password2 } = newUsu;
     const { usuSearch, setUsuSearch } = useContext(UsuarioContext);
+    const { setMensaje } = useContext ( ModalContext );
 
     let url = `https://localhost:44354/api/users`;
 
@@ -39,9 +45,10 @@ const InsertUser = () => {
           }
         ).catch(console.log);  */
         console.log("usuario nuevo registrado")
-        
+        setMensaje('Nuevo usuario registrado');
+        document.getElementById('ms').showModal();
         setControlCambio(false);
-        history.push('/');
+        //history.push('/');
       }
     }, [ usu ])
 
@@ -98,8 +105,7 @@ const InsertUser = () => {
           password: '',
           password2: ''
         })
-        
-        window.alert("Nuevo usuario creado");
+
         
     }
 
@@ -144,6 +150,9 @@ const InsertUser = () => {
                     value={password2}
                   /> 
                   {error( showError, msgError )} 
+                  <Link 
+                    to="/"
+                  >&#10531;Volver</Link>
                 <div className="alin-derecha">
                   <button 
                     type="submit"
@@ -155,6 +164,9 @@ const InsertUser = () => {
             </fieldset>
     
         </form>
+        <Modal
+          ruta='/'
+        />
       
       </main>
     );

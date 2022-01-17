@@ -2,78 +2,70 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { deleteCall } from "../utils/calls";
 import { NavegadorContext } from '../context/NavegadorContext';
+import { ModalContext } from '../context/ModalContext';
+import Modal from '../components/Modal'
 
-const Heroe = ({heroe}) => {
+
+const Heroe = ({ heroe, actualizarHeroes }) => {
 
     const history = useHistory();
     const { id } = heroe;
-    const { setSelect, select } = useContext ( NavegadorContext );
-    const [eliminar, setEliminar] = useState(false)
-    console.log(eliminar)
+    const { setSelect } = useContext ( NavegadorContext );
+    const { setMensaje } = useContext ( ModalContext );
+    const [ eliminar, setEliminar ] = useState(false);
 
     useEffect(() => {
         
-        if(eliminar === true){
-            deleteCall(id).then(
+        if( eliminar === true ){
+        
+            deleteCall( id ).then(
                 result => {
-                    console.log(result);
-                    console.log(result.data);
+                    console.log( result.status );
                 }
-                ).catch(console.log); 
-            console.log('borrar'+ id);
+            ).catch(console.log); 
+            setMensaje('Heroe eliminado');
             document.getElementById('ms').showModal();
-            //history.push('/buscarheroe')
-        }else{
-            console.log('no borrar'+id)
-        }
-        //setEliminar(false);
-          
+            
+        } 
 
-    }, [eliminar])
+    }, [ eliminar ])
 
     const borrar = () => {
-        setEliminar(true) 
+        setEliminar( true );
+        actualizarHeroes();
     }
 
     const modificar = id => {
-        setSelect('agregar')
-        history.push(`/insertheroe/${id}`);
+        setSelect( 'agregar' );
+        history.push( `/insertheroe/${id}` );
     }
 
-    const cerrar = () => {
-        document.getElementById('ms').close()
-    }
 
     return ( 
         <div className="grupo-foto" key={heroe.id}>
             <div className="contenido">
                 <h3>{heroe.name}</h3>
-                {/* <img src={heroe.thumbnail.path+"/portrait_xlarge.jpg"} alt={heroe.name}/> */}
+                <figure>
+                    {/* <img src={heroe.thumbnail.path+"/portrait_xlarge.jpg"} alt={heroe.name}/> */}
+                    <figcaption>Imagen de {heroe.name}</figcaption>
+                </figure> 
                 <h4>{heroe.id}</h4>
-                <p>{heroe.description}</p>
+                <p title="Descripción de heroe">{heroe.description}</p>
             </div>
-            <div className='botones'>
+            <div className="botones">
                 <button 
                     type="button"
                     className="boton"
                     onClick={borrar}
-                >
-                    Eliminar
-                </button>
+                >Eliminar</button>
                 <button 
                     type="button"
                     className="boton"
-                    onClick={() => modificar (id)}
-                >
-                    Modificar
-                </button>
+                    onClick={() => modificar( id )}
+                >Modificar</button>
             </div>
-            <dialog id="ms">
-                <h2>¡Heroe eliminado!</h2>
-                
-                <p>¡YA NO HAY MARCHA ATRÁS!</p>
-                <button onClick={cerrar}>Ok!</button>
-            </dialog>
+            <Modal/>
+            
         </div>
     );
 }

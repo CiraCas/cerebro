@@ -10,10 +10,13 @@ function Heroes() {
     
   const [marvel, setMarvel] = useState([]);
   const [heroeMarvelView, setHeroeMarvelView] = useState([]);
+  const [actualizar, setActualizar] = useState('false');
   const { registered } = useContext(UsuarioContext);
   const history = useHistory();
 
-  
+  const actualizarHeroes = () => {
+    setActualizar( 'true' );
+  }
 
   useEffect(() => {
     if(!registered){
@@ -28,7 +31,7 @@ function Heroes() {
     ).catch(console.log);
     }
     
-  }, []) 
+  }, [actualizar]) 
 
   const randomHeroeMarvel = () => {
     const elementoAleatorio = Math.floor(Math.random()*(marvel.length));
@@ -71,6 +74,7 @@ function Heroes() {
           <Heroe
             key = {heroe.id}
             heroe = {heroe}
+            actualizarHeroes = {actualizarHeroes}
           />
         ))}
       </div>

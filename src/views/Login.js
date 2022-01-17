@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Modal from '../components/Modal';
 
 import { 
   useHistory,
@@ -109,7 +110,7 @@ function Login() {
           </fieldset>
 
       </form>
-    
+      
     </main>
   )
 }
