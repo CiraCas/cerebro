@@ -1,0 +1,31 @@
+.insert-user .formulario {
+    background-color: var(--primario);
+    width: min(60rem, 100%); /*coge 600px o si es más pequeño el 100%. Evita usar media queries */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.insert-user .formulario legend {
+    color: var(--primarioOscuro);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+}
+  
+.insert-user .formulario label {
+    color: var(--primarioOscuro);
+    font-weight: bold;
+    margin: 0.5rem;
+    display: block;
+    font-size: 2rem;
+}
+
+.insert-user .input-text {
+    border: none;
+    width: 98%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}

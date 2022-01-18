@@ -7,7 +7,7 @@ import { UsuarioContext } from '../context/UsuarioContext';
 
 const TablaHeroes = () => {
 
-  const [marvel, setMarvel] = useState([]);
+  const [ marvel, setMarvel ] = useState([]);
 
   const { registered } = useContext(UsuarioContext);
   const history = useHistory();

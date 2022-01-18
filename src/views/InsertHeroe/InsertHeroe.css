@@ -1,0 +1,45 @@
+.insert-heroe .formulario {
+    background-color: var(--grisClaro);
+    width: min(80rem, 100%); /*coge 700px o si es más pequeño el 100%. Evita usar media queries */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+}
+.insert-heroe .formulario label,
+.insert-heroe .formulario legend {
+  color: var(--blanco);
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.insert-heroe .formulario input,
+.insert-heroe .formulario textarea {
+    margin-top: 0.5rem;
+}
+
+.insert-heroe .formulario legend {
+    color: var(--blanco);
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.insert-heroe .apartado-form {
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 1rem;
+}
+
+.insert-heroe .apartado-form textarea {
+    height: 10rem;
+}
+
+.insert-heroe .input-text {
+    border: none;
+    width: 98%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}

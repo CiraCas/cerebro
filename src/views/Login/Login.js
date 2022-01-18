@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Modal from '../components/Modal';
-
+import './Login.css';
 import { 
   useHistory,
   Link
 } from 'react-router-dom';
-
-import { UsuarioContext } from '../context/UsuarioContext';
-import { searchCall } from "../utils/calls";
-import { error } from "../common/error";
+import { UsuarioContext } from '../../context/UsuarioContext';
+import { searchCall } from "../../utils/calls";
+import { error } from "../../common/error/error";
  
 
 function Login() {
@@ -65,7 +63,7 @@ function Login() {
   }
 
   return (
-    <main className="container">
+    <main className="container login">
       <h2 className="centrar">
           Login
       </h2>

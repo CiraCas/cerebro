@@ -1,18 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { deleteCall } from "../utils/calls";
-import { NavegadorContext } from '../context/NavegadorContext';
-import { ModalContext } from '../context/ModalContext';
-import Modal from '../components/Modal'
-
-
+import { deleteCall } from "../../utils/calls";
+import { NavegadorContext } from '../../context/NavegadorContext';
+import { ModalContext } from '../../context/ModalContext';
+import Modal from '../Modal';
+import './Heroe.css';
 const Heroe = ({ heroe, actualizarHeroes }) => {
 
     const history = useHistory();
     const { id } = heroe;
     const { setSelect } = useContext ( NavegadorContext );
     const { setMensaje } = useContext ( ModalContext );
-    const [ eliminar, setEliminar ] = useState(false);
+    const [ eliminar, setEliminar ] = useState( false );
 
     useEffect(() => {
         

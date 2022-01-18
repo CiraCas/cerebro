@@ -1,0 +1,30 @@
+.grupo-foto {
+    background-color: var(--secundario);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    color: var(--blancoRoto);
+}
+
+.grupo-foto .contenido {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.grupo-foto h3 {
+    color: var(--blanco)
+}
+
+.grupo-foto .botones {
+    display: flex;
+}
+
+.grupo-foto .botones button {
+    margin: 5px;
+}

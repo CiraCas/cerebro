@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { useHistory } from 'react-router-dom';
-import { UsuarioContext } from '../context/UsuarioContext';
-import { NavegadorContext } from "../context/NavegadorContext";
+import { UsuarioContext } from '../../context/UsuarioContext';
+import { NavegadorContext } from "../../context/NavegadorContext";
+import './Desconectar.css';
 
 const Desconectar = () => {
 
@@ -26,7 +27,7 @@ const Desconectar = () => {
             {registered
                 ?
                 (
-                    <div className="alin-derecha">
+                    <div className="alin-derecha desconectar">
                         <h3>Hola {usuario.name}</h3>
                         <i 
                             type="button"

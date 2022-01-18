@@ -15,7 +15,7 @@ const Modal = ({ ruta }) => {
     }
     
     return ( 
-        <dialog id="ms">
+        <dialog id="ms" className='centrar'>
         <h4 className='red'>{mensaje}</h4>
         <button onClick={cerrar}>Ok!</button>
         </dialog> 

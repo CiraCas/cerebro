@@ -1,8 +1,9 @@
 import React, {useEffect, useState, useContext} from 'react';
-import Heroe from '../components/Heroe';
-import { searchCall, simpleCall} from "../utils/calls"; 
+import Heroe from '../../components/Heroe';
+import { searchCall, simpleCall} from "../../utils/calls"; 
 import { useHistory } from 'react-router-dom';
-import { UsuarioContext } from '../context/UsuarioContext';
+import { UsuarioContext } from '../../context/UsuarioContext';
+import './BuscarHeroe.css';
 
 const BuscarHeroe = () => {
   const { registered } = useContext(UsuarioContext);
@@ -113,7 +114,7 @@ const BuscarHeroe = () => {
   }, [letra, url, actualizar]) 
 
   return ( 
-    <main>
+    <main className='buscar-heroe container'>
       <h2 className='centrar'>
         Busca Heroe
       </h2>

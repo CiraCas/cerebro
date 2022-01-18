@@ -1,4 +1,4 @@
-
+import './error.css';
 const error = ( error, msgError ) => {
 
     return ( 
@@ -6,7 +6,7 @@ const error = ( error, msgError ) => {
             {error? <p className = "alerta-error">{msgError}</p> 
             : null}
         </> 
-     );
+    );
 }
  
 export { error }

@@ -1,0 +1,7 @@
+.alerta-error {
+    color: var(--error);
+    padding: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: right;
+}

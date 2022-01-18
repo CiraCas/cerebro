@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from 'react-router-dom';
-import { UsuarioContext } from '../context/UsuarioContext';
-import {simpleCall} from "../utils/calls";
-import Heroe from "../components/Heroe";
+import { UsuarioContext } from '../../context/UsuarioContext';
+import {simpleCall} from "../../utils/calls";
+import Heroe from "../../components/Heroe";
+import './Heroes.css';
 
 
 
@@ -45,7 +46,7 @@ function Heroes() {
   
   
   return(
-    <main>
+    <main className="container heroes">
 
       <h1 className="centrar">Heroes</h1>
 
@@ -57,7 +58,7 @@ function Heroes() {
         ) 
         : 
         (
-          <div className="container">
+          <div >
             <button
               onClick={randomHeroeMarvel}
               id="boton"
@@ -68,7 +69,7 @@ function Heroes() {
         )
       }
 
-      <div className="container grupos-fotos">
+      <div className="grupos-fotos">
        
         {heroeMarvelView.map( heroe => (
           <Heroe

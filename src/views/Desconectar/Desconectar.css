@@ -1,0 +1,20 @@
+.desconectar .fa-sign-out-alt{
+    font-size: 30px;
+    margin-top: 1.5rem;
+}
+.desconectar .fas {
+color: var(--primarioOscuro);
+padding: 1rem;
+margin-right: 2rem;
+
+
+}
+.desconectar .fas-p {
+font-size: 15px;
+margin-top: 0.5rem;
+}
+
+.desconectar .fas:hover{
+color: var(--secundario);
+cursor: pointer;
+}

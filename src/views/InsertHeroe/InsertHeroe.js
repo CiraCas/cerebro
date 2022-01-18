@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { searchCall, postCall, putCall } from "../utils/calls"; 
+import { searchCall, postCall, putCall } from "../../utils/calls"; 
 import { useHistory, useParams } from 'react-router-dom';
-import { UsuarioContext } from '../context/UsuarioContext';
-import { NavegadorContext } from '../context/NavegadorContext';
-import { ModalContext } from '../context/ModalContext';
-import { error } from "../common/error";
-import Modal from '../components/Modal';
+import { UsuarioContext } from '../../context/UsuarioContext';
+import { NavegadorContext } from '../../context/NavegadorContext';
+import { ModalContext } from '../../context/ModalContext';
+import { error } from "../../common/error/error";
+import Modal from '../../components/Modal';
+import './InsertHeroe.css';
 
 
 const InsertHeroe = () => {
@@ -13,7 +14,6 @@ const InsertHeroe = () => {
     const [heroeForm, setHeroeForm] = useState({
         name: '',
         description: '',
-        img:'',
         image:''
     });
     const [ showError, setShowError ] = useState(false);
@@ -37,7 +37,6 @@ const InsertHeroe = () => {
             searchCall(url).then(
                 result => {
                   setHeroeForm(result.data) 
-                  console.log(result.data)
                 }
               ).catch(console.log);
         }
@@ -97,7 +96,6 @@ const InsertHeroe = () => {
             if( id === 'null') {
                 postCall(heroe).then(
                     result => {
-                      console.log(result);
                       console.log(result.data);
                     }
                   ).catch(console.log);
@@ -105,7 +103,6 @@ const InsertHeroe = () => {
             }else{
                 putCall(heroe).then(
                     result => {
-                      console.log(result);
                       console.log(result.data);
                     }
                   ).catch(console.log);
@@ -142,7 +139,7 @@ const InsertHeroe = () => {
     }
 
     return (         
-        <main>
+        <main className='insert-heroe'>
             <div className='centrar'>
                 <h2>Heroe</h2> 
             </div>
@@ -150,7 +147,7 @@ const InsertHeroe = () => {
             
             <form
                 onSubmit={submitHeroe}
-                className="formulario-admin"
+                className="formulario"
             >
                 <fieldset>
                     <legend> Agregar o Modificar Heroe </legend>
@@ -169,12 +166,12 @@ const InsertHeroe = () => {
                     <div className="apartado-form">
                         <label>Imagen</label>
                         <input
-                            id = "result"
-                            type = "file"
-                            name = "img"
+                            id="result"
+                            type="file"
+                            name="img"
                             //onChange={grabarDatos}
-                            onChange = {grabarImg}  
-                            //value = {img} 
+                            onChange={grabarImg}  
+                            //value={img} 
                         />
                         
                     </div>

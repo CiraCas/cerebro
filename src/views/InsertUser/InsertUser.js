@@ -1,15 +1,13 @@
 import React, { useState, useContext, useEffect} from 'react';
-import Modal from '../components/Modal';
-import { useHistory, Link } from 'react-router-dom';
-import { UsuarioContext } from '../context/UsuarioContext';
-import { ModalContext } from '../context/ModalContext';
-import { searchCall, postCallUser } from "../utils/calls";
-import { error } from "../common/error";
-
-
+import Modal from '../../components/Modal';
+import { Link } from 'react-router-dom';
+import { UsuarioContext } from '../../context/UsuarioContext';
+import { ModalContext } from '../../context/ModalContext';
+import { searchCall, postCallUser } from "../../utils/calls";
+import { error } from "../../common/error";
+import './InsertUser.css';
 
 const InsertUser = () => {
-  
 
     const [showError, setShowError] = useState(false);
     const [msgError, setMsgError] = useState('');
@@ -20,7 +18,6 @@ const InsertUser = () => {
     });
     const [controlCambio, setControlCambio] = useState(false);
     const [usu, setUsu] = useState({});
-    const history = useHistory();
     const { name, password, password2 } = newUsu;
     const { usuSearch, setUsuSearch } = useContext(UsuarioContext);
     const { setMensaje } = useContext ( ModalContext );
@@ -34,21 +31,18 @@ const InsertUser = () => {
         }
         ).catch(console.log);
     }, [])
-    
 
     useEffect(() => {
       if(controlCambio){
-        /* postCallUser(usu).then(
+        postCallUser(usu).then(
           result => {
             console.log(result);
             console.log(result.data);
           }
-        ).catch(console.log);  */
-        console.log("usuario nuevo registrado")
+        ).catch(console.log); 
         setMensaje('Nuevo usuario registrado');
         document.getElementById('ms').showModal();
         setControlCambio(false);
-        //history.push('/');
       }
     }, [ usu ])
 
@@ -77,22 +71,12 @@ const InsertUser = () => {
           return;
         }
 
-        /* usuSearch.forEach(usu => {
-            if( name === usu.name ){
-              setExists (true) ;
-              mandar = true;
-              return;
-            }
-          }
-        ); */
-
         if(usuSearch.some(elem => elem.name === name)){
           setShowError ( true );
           setMsgError('Nombre de usuario ya registrado');
           return;
         }
 
-        
         setUsu({
           name: name,
           password: password
@@ -110,7 +94,7 @@ const InsertUser = () => {
     }
 
     return ( 
-        <main>
+        <main className='insert-user'>
           <h2 className="centrar">
               Crea Nueva Cuenta
           </h2>
