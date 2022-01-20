@@ -8,10 +8,7 @@ import './BuscarHeroe.css';
 const BuscarHeroe = () => {
   const { registered } = useContext(UsuarioContext);
   const history = useHistory();
-  const [actualizar, setActualizar] = useState('false');
-  const actualizarHeroes = () => {
-    setActualizar( 'true' );
-  }
+  const [actualizar, setActualizar] = useState();
 
   /* const [ letra, setLetra ] = useState('');
   const [ marvel, setMarvel ] = useState([]);
@@ -107,7 +104,7 @@ const BuscarHeroe = () => {
           }
         ).catch(console.log);
       }
-      setActualizar( 'false' );
+      //setActualizar( 'false' );
       
     }
    
@@ -129,7 +126,7 @@ const BuscarHeroe = () => {
           <Heroe
             key = {heroe.id}
             heroe = {heroe}
-            actualizarHeroes = {actualizarHeroes}
+            setActualizar={setActualizar} 
           />
         ))} 
       </div>

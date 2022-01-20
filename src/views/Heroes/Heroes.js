@@ -9,15 +9,12 @@ import './Heroes.css';
 
 function Heroes() {
     
-  const [marvel, setMarvel] = useState([]);
-  const [heroeMarvelView, setHeroeMarvelView] = useState([]);
-  const [actualizar, setActualizar] = useState('false');
+  const [ marvel, setMarvel ] = useState([]);
+  const  [heroeMarvelView, setHeroeMarvelView ] = useState([]);
+  const [ actualizar, setActualizar ] = useState();
   const { registered } = useContext(UsuarioContext);
   const history = useHistory();
-
-  const actualizarHeroes = () => {
-    setActualizar( 'true' );
-  }
+  console.log(actualizar);
 
   useEffect(() => {
     if(!registered){
@@ -32,7 +29,7 @@ function Heroes() {
     ).catch(console.log);
     }
     
-  }, [actualizar]) 
+  }, []) 
 
   const randomHeroeMarvel = () => {
     const elementoAleatorio = Math.floor(Math.random()*(marvel.length));
@@ -43,7 +40,14 @@ function Heroes() {
     ])
     marvel.splice(elementoAleatorio, 1);
   }
-  
+
+  if(actualizar !== undefined){
+    const newArray = heroeMarvelView.filter(hero => hero.id !== actualizar);
+    setHeroeMarvelView([
+      ...newArray
+    ])
+    setActualizar(); 
+  }
   
   return(
     <main className="container heroes">
@@ -75,7 +79,7 @@ function Heroes() {
           <Heroe
             key = {heroe.id}
             heroe = {heroe}
-            actualizarHeroes = {actualizarHeroes}
+            setActualizar = {setActualizar}
           />
         ))}
       </div>

@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { deleteCall } from "../../utils/calls";
 import { NavegadorContext } from '../../context/NavegadorContext';
 import { ModalContext } from '../../context/ModalContext';
 import Modal from '../Modal';
 import './Heroe.css';
-const Heroe = ({ heroe, actualizarHeroes }) => {
+const Heroe = ({ heroe, setActualizar }) => {
 
+    const myModal = useRef(null);
     const history = useHistory();
     const { id } = heroe;
     const { setSelect } = useContext ( NavegadorContext );
@@ -23,7 +24,7 @@ const Heroe = ({ heroe, actualizarHeroes }) => {
                 }
             ).catch(console.log); 
             setMensaje('Heroe eliminado');
-            document.getElementById('ms').showModal();
+            myModal.current.showModal();
             
         } 
 
@@ -31,13 +32,18 @@ const Heroe = ({ heroe, actualizarHeroes }) => {
 
     const borrar = () => {
         setEliminar( true );
-        actualizarHeroes();
     }
 
     const modificar = id => {
         setSelect( 'agregar' );
         history.push( `/insertheroe/${id}` );
     }
+
+    const cerrar = () => {
+        setMensaje('');
+        setActualizar( id );
+        myModal.current.close();
+    } 
 
 
     return ( 
@@ -63,7 +69,11 @@ const Heroe = ({ heroe, actualizarHeroes }) => {
                     onClick={() => modificar( id )}
                 >Modificar</button>
             </div>
-            <Modal/>
+            <dialog ref={myModal} className='centrar'>
+                <Modal
+                 cerrar={cerrar}
+                />
+            </dialog>
             
         </div>
     );
