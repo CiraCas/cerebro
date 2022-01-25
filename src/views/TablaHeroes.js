@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import DataGrid from 'react-data-grid';
 import {simpleCall} from "../utils/calls";
-
 import { useHistory } from 'react-router-dom';
 import { UsuarioContext } from '../context/UsuarioContext';
 

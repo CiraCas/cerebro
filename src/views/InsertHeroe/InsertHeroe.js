@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { searchCall, postCall, putCall } from "../../utils/calls"; 
 import { useHistory, useParams } from 'react-router-dom';
 import { UsuarioContext } from '../../context/UsuarioContext';
@@ -11,6 +11,7 @@ import './InsertHeroe.css';
 
 const InsertHeroe = () => {
 
+    const myModal = useRef(null);
     const [heroeForm, setHeroeForm] = useState({
         name: '',
         description: '',
@@ -108,10 +109,9 @@ const InsertHeroe = () => {
                   ).catch(console.log);
                 setSelect( 'buscador' );  
                 setMensaje('Heroe actualizado');  
-                //history.push('/buscarheroe')
             }
             
-            document.getElementById('ms').showModal();
+            myModal.current.showModal();
 
             setControlCambio(false);
         }
@@ -137,6 +137,16 @@ const InsertHeroe = () => {
             image:''
         })
     }
+
+    
+    const cerrar = () => {
+        setMensaje('');
+        console.log('cerrar modal');
+        myModal.current.close();
+        if(id !== 'null'){
+            history.push('/buscarheroe');
+        }
+    } 
 
     return (         
         <main className='insert-heroe'>
@@ -195,12 +205,11 @@ const InsertHeroe = () => {
                     
                 </fieldset>
             </form>
-            {id !== 'null'
-            ? <Modal
-                ruta='/buscarheroe'
-            />
-            :<Modal/>
-            }
+            <dialog ref={myModal} className='centrar'>
+                <Modal
+                    cerrar={cerrar}
+                />
+            </dialog>
         </main> 
         );
 }
