@@ -30,25 +30,25 @@ const Ruta = () => {
                 <Navegador/>
             
                 
-            <section
-                className="main"
-            >
-                <Desconectar/>
-                <Switch>
-                    <Route path="/insertheroe/:id">
-                        <InsertHeroe />
-                    </Route>
-                    <Route path="/tablaheroes">
-                        <TablaHeroes />
-                    </Route>
-                    <Route path="/buscarheroe">
-                        <BuscarHeroe />
-                    </Route>
-                    <Route path="/heroes">
-                        <Heroes />
-                    </Route>
-                </Switch>
-            </section>
+                <section
+                    className="main"
+                >
+                    <Desconectar/>
+                    <Switch>
+                        <Route path="/insertheroe/:id">
+                            <InsertHeroe />
+                        </Route>
+                        <Route path="/tablaheroes">
+                            <TablaHeroes />
+                        </Route>
+                        <Route path="/buscarheroe">
+                            <BuscarHeroe />
+                        </Route>
+                        <Route path="/heroes">
+                            <Heroes />
+                        </Route>
+                    </Switch>
+                </section>
             </div>
           )
           : 
